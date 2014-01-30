@@ -73,7 +73,7 @@ public class MetadataTransformer {
 				}
 			}
 			
-			// write the content into xml file
+			// write the content back into xml file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 		
@@ -85,22 +85,19 @@ public class MetadataTransformer {
 			
 		} 
 		catch (TransformerConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		catch (SAXException e) {
-			// TODO Auto-generated catch block
+		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (TransformerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	public void processMetaFiles(){
+		
+		//get files in the folder
 		File folder = new File(filePath);
 		File[] folderList = folder.listFiles();
 		
@@ -115,6 +112,8 @@ public class MetadataTransformer {
 		}
 		
 		for(File f : folderList){
+			
+			//if it is a metadata file, process it
 			if(f.isFile() && f.getName().contains("meta.xml")){
 				modifyVersion(filePath+"\\"+f.getName(),docBuilder );
 			}
