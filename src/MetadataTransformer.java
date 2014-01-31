@@ -81,6 +81,7 @@ public class MetadataTransformer {
 			StreamResult result = new StreamResult(new File(filePath));
 			transformer.transform(source, result);
 			
+			//Sys our to confirm..
 			System.out.println("Done..."+ filePath);
 			
 		} 
